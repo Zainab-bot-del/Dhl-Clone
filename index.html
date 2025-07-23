@@ -3,47 +3,885 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zainab Tehreem Justice Wali</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Black Brew - Premium Coffee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #1A1A1A; /* Dark black */
+            --secondary-color: #333333; /* Soft black */
+            --accent-color: #D4AF37; /* Gold accent */
+            --dark-color: #0D0D0D; /* Pure black */
+            --light-color: #F2F2F2; /* Light text */
+            --text-color: #E6E6E6; /* Off-white */
+            --white: #FFFFFF;
+            --coffee-brown: #3E2723; /* Deep coffee tone for contrast */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background: var(--light-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Header/Navigation */
+        header {
+            background-color: rgba(26, 26, 26, 0.9);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 40px;
+            position: relative;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .login-btn a {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .login-btn a:hover {
+            background: var(--light-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(13, 13, 13, 0.7), rgba(13, 13, 13, 0.7)), url('https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            padding: 80px 50px;
+            background: var(--primary-color);
+        }
+
+        .category {
+            text-align: center;
+            padding: 30px;
+            transition: all 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .category:hover {
+            transform: translateY(-15px);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .category i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .category p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Menu Sections */
+        .menu-section {
+            padding: 100px 50px;
+            text-align: center;
+            background: var(--dark-color);
+        }
+
+        .menu-section h2 {
+            font-size: 3rem;
+            margin-bottom: 70px;
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .menu-section h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: -15px;
+            left: 25%;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .menu-item {
+            background: var(--primary-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .item-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .coffee1 {
+            background-image: url('https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+
+        .coffee2 {
+            background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+
+        .coffee3 {
+            background-image: url('https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+
+        .coffee4 {
+            background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+
+        .dessert1 {
+            background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+
+        .dessert2 {
+            background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+
+        .dessert3 {
+            background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+
+        .dessert4 {
+            background-image: url('https://images.unsplash.com/photo-1542823339-90682d75a6c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+
+        .menu-item h3 {
+            margin: 25px 0 15px;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+
+        .price {
+            color: var(--light-color);
+            font-weight: bold;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .order-btn {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 25px;
+            margin-bottom: 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .order-btn:hover {
+            background: var(--light-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Promo Section */
+        .promo {
+            background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1507133750040-4a8f57021571?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 150px 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .promo-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .promo-content h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .promo-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 50px;
+            text-align: center;
+            background: var(--primary-color);
+        }
+
+        .testimonials h2 {
+            font-size: 3rem;
+            margin-bottom: 80px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: var(--dark-color);
+            padding: 50px;
+            border-radius: 15px;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .rating {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .testimonial h4 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 120px 20px;
+            text-align: center;
+            background: var(--dark-color);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .newsletter h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .newsletter p {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter form {
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter input {
+            padding: 18px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            width: 70%;
+            background: var(--primary-color);
+            color: var(--text-color);
+            font-size: 1.1rem;
+            outline: none;
+        }
+
+        .newsletter button {
+            border-radius: 0 30px 30px 0;
+            padding: 18px 35px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            padding: 80px 20px 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .categories {
+                flex-wrap: wrap;
+            }
+            
+            .category {
+                width: 45%;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                background: var(--primary-color);
+                height: 100vh;
+                width: 250px;
+                top: 0;
+                right: -250px;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 40px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+
+            .hamburger.active .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .line:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .menu-section h2, .testimonials h2, .newsletter h2, .promo-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .testimonial {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .category {
+                width: 100%;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter form {
+                flex-direction: column;
+            }
+            
+            .newsletter input {
+                width: 100%;
+                border-radius: 30px;
+                margin-bottom: 15px;
+            }
+            
+            .newsletter button {
+                border-radius: 30px;
+                width: 100%;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header/Navigation -->
     <header>
-        <nav>
-            <ul>
+        <nav class="navbar">
+            <div class="logo">Black<span>Brew</span></div>
+            <ul class="nav-links">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Community</a></li>
-                <li><a href="#">Service & Support</a></li>
+                <li><a href="#coffee">Coffee</a></li>
+                <li><a href="#dessert">Dessert</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="login-btn"><a href="#">Login</a></li>
             </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
         </nav>
     </header>
-    <main>
-        <section class="hero">
-            <h1>Remarkable Performance</h1>
-            <p>The best just got better.</p>
-            <img src="your-image-url-here.jpg" alt="Product Image">
-        </section>
-        <section class="latest-news">
-            <h2>The Latest from Zainab Tehreem Justice Wali</h2>
-            <div class="news-cards">
-                <div class="card">
-                    <img src="image1.jpg" alt="News Image 1">
-                    <h3>Product 1</h3>
-                    <p>Description of Product 1.</p>
-                </div>
-                <div class="card">
-                    <img src="image2.jpg" alt="News Image 2">
-                    <h3>Product 2</h3>
-                    <p>Description of Product 2.</p>
-                </div>
-                <!-- Add more cards as needed -->
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Dark Roast Excellence</h1>
+            <p>Experience the boldest flavors from our premium black coffee selection</p>
+            <a href="#coffee" class="btn">Explore Menu</a>
+        </div>
+    </section>
+
+    <!-- Category Icons -->
+    <section class="categories">
+        <div class="category">
+            <i class="fas fa-mug-hot"></i>
+            <p>Black Coffee</p>
+        </div>
+        <div class="category">
+            <i class="fas fa-glass-whiskey"></i>
+            <p>Cold Brew</p>
+        </div>
+        <div class="category">
+            <i class="fas fa-coffee"></i>
+            <p>Espresso</p>
+        </div>
+        <div class="category">
+            <i class="fas fa-cookie"></i>
+            <p>Dark Desserts</p>
+        </div>
+    </section>
+
+    <!-- Special Coffee Section -->
+    <section id="coffee" class="menu-section">
+        <h2>Our Black Coffee Selection</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <div class="item-image coffee1"></div>
+                <h3>Midnight Blend</h3>
+                <p class="price">$5.99</p>
+                <button class="order-btn">Order Now</button>
             </div>
-        </section>
-        <!-- Add more sections as needed -->
-    </main>
+            <div class="menu-item">
+                <div class="item-image coffee2"></div>
+                <h3>Obsidian Roast</h3>
+                <p class="price">$6.49</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <div class="item-image coffee3"></div>
+                <h3>Blackout Espresso</h3>
+                <p class="price">$4.99</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <div class="item-image coffee4"></div>
+                <h3>Noir Cold Brew</h3>
+                <p class="price">$5.99</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Dessert Section -->
+    <section id="dessert" class="menu-section">
+        <h2>Dark Desserts</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <div class="item-image dessert1"></div>
+                <h3>Black Forest Cake</h3>
+                <p class="price">$7.99</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <div class="item-image dessert2"></div>
+                <h3>Dark Chocolate Mousse</h3>
+                <p class="price">$6.99</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <div class="item-image dessert3"></div>
+                <h3>Espresso Brownie</h3>
+                <p class="price">$5.49</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <div class="item-image dessert4"></div>
+                <h3>Charcoal Macaron</h3>
+                <p class="price">$4.99</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Section -->
+    <section class="promo">
+        <div class="promo-content">
+            <h2>Artisan Black Coffee Beans</h2>
+            <p>Discover our exclusive single-origin beans roasted to perfection for that signature dark, rich flavor</p>
+            <a href="#coffee" class="btn">Shop Beans</a>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The Midnight Blend is the richest, smoothest coffee I've ever tasted. Perfect for my morning ritual."</p>
+                <h4>- James L.</h4>
+            </div>
+            <div class="testimonial">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"The dark aesthetic matches the bold flavors. My favorite spot in the city for serious coffee lovers."</p>
+                <h4>- Sarah M.</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Join The Dark Side</h2>
+        <p>Subscribe to our newsletter and get 15% off your first order of premium black coffee</p>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Zainab Tehreem Justice Wali. All rights reserved.</p>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>COFFEE</h3>
+                <ul>
+                    <li><a href="#">Our Blends</a></li>
+                    <li><a href="#">Brewing Guides</a></li>
+                    <li><a href="#">Coffee Subscription</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>SHOP</h3>
+                <ul>
+                    <li><a href="#">Online Store</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Merchandise</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>ABOUT</h3>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Roasting Process</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CONTACT</h3>
+                <ul>
+                    <li><a href="#">Locations</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>FOLLOW US</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Black Brew. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
