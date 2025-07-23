@@ -1,114 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zainab Tehreem | Justicewali</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-top: 30px;
-        }
-        header {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        h1 {
-            color: #6a0dad; /* Purple accent for justice theme */
-            margin-bottom: 5px;
-        }
-        h2 {
-            color: #6a0dad;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .tagline {
-            font-style: italic;
-            color: #666;
-        }
-        .about, .goals, .contact {
-            margin-bottom: 30px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        a {
-            color: #6a0dad;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .social-links {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #777;
-            font-size: 14px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simplified Navigation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+    /* Left-side navigation */
+    .left-nav {
+      width: 240px;
+      height: 100vh;
+      background: #f0f2f5;
+      padding: 20px 10px;
+      box-shadow: 1px 0 5px rgba(0,0,0,0.1);
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+    .nav-item:hover {
+      background: #e4e6e9;
+    }
+    .nav-item img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+    .nav-item span {
+      font-size: 15px;
+      font-weight: 500;
+    }
+    /* Logo (top-left corner) */
+    .logo {
+      padding: 10px 0 20px 10px;
+      margin-bottom: 10px;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Zainab Tehreem | Justicewali</h1>
-            <p class="tagline">Future Gamer • Justice Advocate • AI Explorer</p>
-            <p><strong>From:</strong> Pindi Gujaran, Punjab, Pakistan<br>
-               <strong>Lives in:</strong> Pindi Gheb<br>
-               <strong>School:</strong> British School of Oxford – Pindigheb Campus</p>
-        </header>
-
-        <section class="about">
-            <h2>About Me</h2>
-            <p>I’m a proud student of Rehan School Online Academy. I dream big, work hard, and stand for justice, fairness, and truth. I’m also a future gamer, music lover, and digital explorer.</p>
-        </section>
-
-        <section class="goals">
-            <h2>My Goals</h2>
-            <ul>
-                <li>Become a top gamer & game developer</li>
-                <li>Stand for truth and justice</li>
-                <li>Help the poor and become a billionaire philanthropist</li>
-                <li>Explore the world and learn AI</li>
-            </ul>
-        </section>
-
-        <section class="contact">
-            <h2>Get In Touch</h2>
-            <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-            <div class="social-links">
-                <a href="#" target="_blank">Twitter</a>
-                <a href="#" target="_blank">Instagram</a>
-                <a href="#" target="_blank">GitHub</a>
-                <a href="#" target="_blank">Discord</a>
-            </div>
-        </section>
-
-        <footer>
-            &copy; 2024 Zainab Tehreem | Justicewali. All rights reserved.
-        </footer>
+  <!-- Left Navigation -->
+  <div class="left-nav">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="https://placehold.co/40x40" alt="Logo">
     </div>
+    
+    <!-- Menu Items -->
+    <div class="nav-item">
+      <img src="https://placehold.co/24x24" alt="Home">
+      <span>Home</span>
+    </div>
+    <div class="nav-item">
+      <img src="https://placehold.co/24x24" alt="Friends">
+      <span>Friends</span>
+    </div>
+    <div class="nav-item">
+      <img src="https://placehold.co/24x24" alt="Videos">
+      <span>Videos</span>
+    </div>
+    <div class="nav-item">
+      <img src="https://placehold.co/24x24" alt="Groups">
+      <span>Groups</span>
+    </div>
+    <div class="nav-item">
+      <img src="https://placehold.co/24x24" alt="Gaming">
+      <span>Gaming</span>
+    </div>
+  </div>
+
+  <!-- Main Content (empty for demo) -->
+  <div class="main-content"></div>
 </body>
 </html>
