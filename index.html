@@ -1,495 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zainab Tehreem Justice Wali</title>
-    <style>
-        /* CSS Styles with your purple shades */
-        :root {
-            --primary-purple: #a06cd5;
-            --light-purple: #dab6fc;
-            --dark-purple: #b185db;
-            --accent-gold: #ffd700;
-            --white: #ffffff;
-            --black: #333333;
-            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light-purple);
-            color: var(--black);
-            line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
-            color: var(--white);
-            text-align: center;
-            padding: 3rem 1rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            opacity: 0.1;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-        }
-        
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--accent-gold);
-            margin: 1rem auto;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .profile-img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        nav {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-        
-        nav a {
-            color: var(--dark-purple);
-            text-decoration: none;
-            padding: 0.5rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        nav a:hover {
-            background-color: var(--primary-purple);
-            color: var(--white);
-            box-shadow: 0 2px 10px rgba(160, 108, 213, 0.5);
-        }
-        
-        nav a:hover::before {
-            left: 100%;
-        }
-        
-        nav a:active {
-            transform: scale(0.95);
-            background-color: var(--dark-purple);
-            box-shadow: 0 0 15px rgba(177, 133, 219, 0.7);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        section {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(160, 108, 213, 0.2);
-        }
-        
-        h2 {
-            color: var(--primary-purple);
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent-gold);
-        }
-        
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .skill {
-            background-color: var(--light-purple);
-            color: var(--dark-purple);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .skill:hover {
-            background-color: var(--primary-purple);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(160, 108, 213, 0.3);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .portfolio-item {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            background: white;
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(160, 108, 213, 0.3);
-        }
-        
-        .portfolio-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .portfolio-item:hover .portfolio-img {
-            transform: scale(1.05);
-        }
-        
-        .portfolio-info {
-            padding: 1rem;
-        }
-        
-        .contact-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group.full-width {
-            grid-column: span 2;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark-purple);
-            font-weight: 500;
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        input:focus, textarea:focus {
-            border-color: var(--primary-purple);
-            box-shadow: 0 0 0 3px rgba(160, 108, 213, 0.2);
-            outline: none;
-        }
-        
-        textarea {
-            min-height: 150px;
-        }
-        
-        button {
-            background-color: var(--primary-purple);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-        }
-        
-        button:hover {
-            background-color: var(--dark-purple);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(160, 108, 213, 0.3);
-        }
-        
-        button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 5px rgba(160, 108, 213, 0.5);
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .social-icon {
-            color: var(--primary-purple);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .social-icon:hover {
-            color: var(--dark-purple);
-            transform: translateY(-3px) scale(1.1);
-            text-shadow: 0 2px 5px rgba(160, 108, 213, 0.3);
-        }
-        
-        footer {
-            background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: var(--shadow);
-        }
-        
-        /* Animation for section when navigated to */
-        section:target {
-            animation: highlight 1.5s ease;
-        }
-        
-        @keyframes highlight {
-            0% { background-color: var(--white); }
-            20% { background-color: var(--light-purple); }
-            100% { background-color: var(--white); }
-        }
-        
-        @media (max-width: 768px) {
-            .contact-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-group.full-width {
-                grid-column: span 1;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .tagline {
-                font-size: 1.2rem;
-            }
-            
-            .nav-container {
-                flex-wrap: wrap;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zainab Tehreem | Portfolio</title>
+  <style>
+    :root {
+      --blue: #2563eb;
+      --light-blue: #dbeafe;
+      --dark-blue: #1e40af;
+      --gold: #facc15;
+      --white: #ffffff;
+      --text: #1f2937;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: var(--light-blue);
+      color: var(--text);
+    }
+
+    header {
+      background: var(--blue);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      margin: 1rem auto;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    nav {
+      background: var(--white);
+      padding: 0.5rem;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: var(--blue);
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--dark-blue);
+    }
+
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: var(--white);
+      padding: 1.5rem;
+      border-left: 5px solid var(--gold);
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    section h2 {
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+
+    .skills span {
+      display: inline-block;
+      background: var(--light-blue);
+      color: var(--dark-blue);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      margin: 0.25rem;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--dark-blue);
+      color: var(--white);
+    }
+
+    .social-links {
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      margin: 0 0.5rem;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .social-links a:hover {
+      color: var(--gold);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>Zainab Tehreem Justice Wali</h1>
-            <p class="tagline">Passionate • Creative • Unique</p>
-            <!-- Replace with your actual image -->
-            <img src="https://via.placeholder.com/150" alt="Zainab Tehreem" class="profile-img">
-        </div>
-    </header>
-    
-    <nav>
-        <div class="nav-container">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-    
-    <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm Zainab Tehreem Justice Wali, a passionate individual with a unique perspective on life. I believe in justice, creativity, and making a positive impact in the world.</p>
-                    <p>My journey has been shaped by diverse experiences that have helped me grow both personally and professionally. I approach every challenge with enthusiasm and a commitment to excellence.</p>
-                    <p>When I'm not working on my projects, you can find me exploring new ideas, connecting with interesting people, or enjoying the simple pleasures of life.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="skills">
-            <h2>My Skills</h2>
-            <div class="skills-container">
-                <span class="skill">Creative Thinking</span>
-                <span class="skill">Problem Solving</span>
-                <span class="skill">Communication</span>
-                <span class="skill">Teamwork</span>
-                <span class="skill">Leadership</span>
-                <span class="skill">Adaptability</span>
-                <!-- Add more skills as needed -->
-            </div>
-        </section>
-        
-        <section id="portfolio">
-            <h2>My Work</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200/a06cd5/ffffff?text=Project+1" alt="Project 1" class="portfolio-img">
-                    <div class="portfolio-info">
-                        <h3>Project Title 1</h3>
-                        <p>Brief description of the project and your role in it.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200/b185db/ffffff?text=Project+2" alt="Project 2" class="portfolio-img">
-                    <div class="portfolio-info">
-                        <h3>Project Title 2</h3>
-                        <p>Brief description of the project and your role in it.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200/dab6fc/333333?text=Project+3" alt="Project 3" class="portfolio-img">
-                    <div class="portfolio-info">
-                        <h3>Project Title 3</h3>
-                        <p>Brief description of the project and your role in it.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="contact">
-            <h2>Get In Touch</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group full-width">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group full-width">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <div class="form-group full-width">
-                    <button type="submit">Send Message</button>
-                </div>
-            </form>
-            
-            <div class="social-links">
-                <a href="#" class="social-icon">Twitter</a>
-                <a href="#" class="social-icon">LinkedIn</a>
-                <a href="#" class="social-icon">Instagram</a>
-                <a href="#" class="social-icon">GitHub</a>
-            </div>
-        </section>
-    </div>
-    
-    <footer>
-        <p>&copy; 2023 Zainab Tehreem Justice Wali. All rights reserved.</p>
-    </footer>
 
-    <script>
-        // Add click animation to nav links
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Add active class for visual feedback
-                this.classList.add('active');
-                
-                // Remove active class after animation completes
-                setTimeout(() => {
-                    this.classList.remove('active');
-                }, 300);
-            });
-        });
-    </script>
+  <header>
+    <h1>Zainab Tehreem</h1>
+    <img src="https://via.placeholder.com/120" alt="Zainab Tehreem" class="profile-img" />
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m Zainab Tehreem, also known as Justice Wali. I stand for truth, fairness, and giving voice to the unheard. Based in Punjab, Pakistan, I am committed to growth, purpose, and meaningful change in my community and beyond.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>Creative Thinking</span>
+      <span>Communication</span>
+      <span>Leadership</span>
+      <span>Teamwork</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Get in touch via social media:</p>
+    <div class="social-links">
+      <a href="#">Twitter</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Zainab Tehreem. All rights reserved.
+  </footer>
+
 </body>
 </html>
