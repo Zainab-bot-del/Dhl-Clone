@@ -2,154 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zainab Tehreem | Justice Wali</title>
+  <title>My Portfolio</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      display: flex;
-      background-color: #fafafa;
+      font-family: Arial, sans-serif;
+      background-color: #f3f0ff;
     }
-    
-    /* Left-side navigation */
-    .left-nav {
-      width: 280px;
-      height: 100vh;
-      background: #dab6fc;
-      padding: 15px;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-    }
-    
-    /* Profile Header */
-    .profile-header {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      background-color: #c77dff;
-      border-radius: 12px;
-      margin-bottom: 25px;
+
+    /* Top Bar */
+    .topbar {
+      background-color: #6a0dad; /* purple */
       color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 10px 20px;
+      text-align: left;
+      font-size: 20px;
     }
-    
-    .profile-pic {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 12px;
-      object-fit: cover;
-      border: 2px solid white;
-    }
-    
-    .profile-name {
-      font-size: 16px;
-      font-weight: 600;
-    }
-    
-    /* Navigation Items */
-    .nav-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 15px;
-      border-radius: 10px;
-      margin-bottom: 8px;
-      cursor: pointer;
-      color: #4a4a4a;
-      transition: all 0.3s ease;
-      background-color: rgba(255,255,255,0.3);
-    }
-    
-    .nav-item:hover {
-      background-color: rgba(255,255,255,0.5);
-      transform: translateX(5px);
-    }
-    
-    .nav-item-content {
-      display: flex;
-      align-items: center;
-    }
-    
-    .nav-item img {
-      width: 24px;
-      height: 24px;
-      margin-right: 15px;
-      object-fit: contain;
-    }
-    
-    .nav-item span {
-      font-size: 15px;
-      font-weight: 500;
-    }
-    
-    .arrow {
-      width: 16px;
-      height: 16px;
-      opacity: 0.7;
-    }
-    
-    /* Settings button style */
-    .settings-btn {
-      background: none;
-      border: none;
+
+    /* Sidebar */
+    .sidebar {
+      width: 200px;
+      background-color: #9b59b6;
+      position: fixed;
+      top: 50px;
+      bottom: 0;
+      left: 0;
+      padding: 20px;
       color: white;
-      margin-left: auto;
-      cursor: pointer;
-      font-size: 18px;
     }
+
+    /* Main Content */
+    .main {
+      margin-left: 220px;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 <body>
-  <!-- Left Navigation -->
-  <div class="left-nav">
-    <!-- Profile Header with Settings Button -->
-    <div class="profile-header">
-      <img src="https://placehold.co/40x40/purple/white?text=ZT" alt="Profile" class="profile-pic">
-      <div class="profile-name">Zainab Tehreem Justice Wali</div>
-      <button class="settings-btn">⚙️</button>
-    </div>
-    
-    <!-- Menu Items -->
-    <div class="nav-item">
-      <div class="nav-item-content">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="Home">
-        <span>Home</span>
-      </div>
-    </div>
-    
-    <div class="nav-item">
-      <div class="nav-item-content">
-        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Friends">
-        <span>Friends</span>
-      </div>
-    </div>
-    
-    <div class="nav-item">
-      <div class="nav-item-content">
-        <img src="https://cdn-icons-png.flaticon.com/512/3669/3669688.png" alt="Videos">
-        <span>Videos</span>
-      </div>
-    </div>
-    
-    <div class="nav-item">
-      <div class="nav-item-content">
-        <img src="https://cdn-icons-png.flaticon.com/512/3669/3669733.png" alt="Groups">
-        <span>Groups</span>
-      </div>
-    </div>
-    
-    <div class="nav-item">
-      <div class="nav-item-content">
-        <img src="https://cdn-icons-png.flaticon.com/512/3612/3612569.png" alt="Gaming">
-        <span>Gaming</span>
-      </div>
-    </div>
+
+  <!-- Top bar like Facebook -->
+  <div class="topbar">
+    My Portfolio Website
   </div>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <!-- Your page content goes here -->
+  <!-- Sidebar like YouTube -->
+  <div class="sidebar">
+    <h2>Your Name</h2>
+    <a href="#">Home</a>
+    <a href="#">About Me</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
   </div>
+
+  <!-- Main content -->
+  <div class="main">
+    <h1>Welcome!</h1>
+    <p>This is your personal website. You can write about your skills, add projects, or anything you like.</p>
+  </div>
+
 </body>
 </html>
