@@ -1,74 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Clone Projects Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      text-align: center;
-      padding: 20px;
-    }
-
-    h1, h2 {
-      color: #222;
-    }
-
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 10px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Clone</title>
+    <style>
+        /* CSS Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f7f7f8;
+            color: #343541;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e5e6;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header h1 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .message {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            line-height: 1.5;
+        }
+        
+        .user-message {
+            background-color: #ffffff;
+            padding: 20px;
+        }
+        
+        .ai-message {
+            background-color: #f7f7f8;
+            padding: 20px;
+        }
+        
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .user-avatar {
+            background-color: #19c37d;
+            color: white;
+        }
+        
+        .ai-avatar {
+            background-color: #5436da;
+            color: white;
+        }
+        
+        .message-content {
+            flex: 1;
+            padding-top: 5px;
+        }
+        
+        .input-container {
+            padding: 20px;
+            background-color: #ffffff;
+            border-top: 1px solid #e5e5e6;
+        }
+        
+        .input-area {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        textarea {
+            width: 100%;
+            border: 1px solid #e5e5e6;
+            border-radius: 6px;
+            padding: 12px 50px 12px 15px;
+            resize: none;
+            font-size: 16px;
+            min-height: 60px;
+            max-height: 200px;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+        
+        textarea:focus {
+            border-color: #5436da;
+        }
+        
+        .send-button {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            background-color: #5436da;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .send-button:hover {
+            background-color: #3e28a1;
+        }
+        
+        .disclaimer {
+            text-align: center;
+            font-size: 12px;
+            color: #8e8ea0;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-
-  <h1>🌐 My Web-Based Clone Projects</h1>
-
-  <div class="grid-container">
-    <button onclick="loadProject('projects/chatgpt-clone/index.html')">ChatGPT Clone</button>
-    <button onclick="loadProject('projects/whatsapp-clone/index.html')">WhatsApp Clone</button>
-    <button onclick="loadProject('projects/cnn-clone/index.html')">CNN Clone</button>
-    <button onclick="loadProject('projects/blogger-clone/index.html')">Blogger.com Clone</button>
-    <button onclick="loadProject('projects/twitter-clone/index.html')">Twitter Clone</button>
-    <button onclick="loadProject('projects/godaddy-clone/index.html')">GoDaddy Clone</button>
-    <button onclick="loadProject('projects/airbnb-clone/index.html')">Airbnb Clone</button>
-    <!-- Add more buttons for other clones -->
-  </div>
-
-  <h2>🖥️ Project Preview Below</h2>
-  <iframe id="projectFrame" src=""></iframe>
-
-  <script>
-    function loadProject(url) {
-      document.getElementById("projectFrame").src = url;
-    }
-  </script>
-
+    <div class="header">
+        <h1>ChatGPT</h1>
+    </div>
+    
+    <div class="chat-container">
+        <div class="message user-message">
+            <div class="avatar user-avatar">U</div>
+            <div class="message-content">
+                Hello, how are you today?
+            </div>
+        </div>
+        
+        <div class="message ai-message">
+            <div class="avatar ai-avatar">AI</div>
+            <div class="message-content">
+                Hello! I'm just a static interface, so I don't have feelings, but thank you for asking! How can I assist you today?
+            </div>
+        </div>
+        
+        <div class="message user-message">
+            <div class="avatar user-avatar">U</div>
+            <div class="message-content">
+                Can you tell me about this demo interface?
+            </div>
+        </div>
+        
+        <div class="message ai-message">
+            <div class="avatar ai-avatar">AI</div>
+            <div class="message-content">
+                This is a non-functional ChatGPT clone interface created with HTML and CSS. It mimics the visual appearance of ChatGPT but doesn't have any actual AI capabilities. It's just a static representation for demonstration purposes.
+            </div>
+        </div>
+    </div>
+    
+    <div class="input-container">
+        <div class="input-area">
+            <textarea placeholder="Message ChatGPT..."></textarea>
+            <button class="send-button">→</button>
+        </div>
+        <div class="disclaimer">
+            ChatGPT can make mistakes. Consider checking important information.
+        </div>
+    </div>
 </body>
 </html>
