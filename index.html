@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zainab Tehreem Justice Wali</title>
     <style>
-        /* CSS Styles */
+        /* CSS Styles with your purple shades */
         :root {
-            --primary-purple: #8a2be2;
-            --light-purple: #e6e6fa;
-            --dark-purple: #4b0082;
+            --primary-purple: #a06cd5;
+            --light-purple: #dab6fc;
+            --dark-purple: #b185db;
             --accent-gold: #ffd700;
             --white: #ffffff;
             --black: #333333;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         * {
@@ -35,6 +36,7 @@
             padding: 3rem 1rem;
             position: relative;
             overflow: hidden;
+            box-shadow: var(--shadow);
         }
         
         header::before {
@@ -74,12 +76,18 @@
             object-fit: cover;
             border: 5px solid var(--accent-gold);
             margin: 1rem auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
         
         nav {
             background-color: var(--white);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -100,11 +108,35 @@
             font-weight: 600;
             transition: all 0.3s ease;
             border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
         
         nav a:hover {
             background-color: var(--primary-purple);
             color: var(--white);
+            box-shadow: 0 2px 10px rgba(160, 108, 213, 0.5);
+        }
+        
+        nav a:hover::before {
+            left: 100%;
+        }
+        
+        nav a:active {
+            transform: scale(0.95);
+            background-color: var(--dark-purple);
+            box-shadow: 0 0 15px rgba(177, 133, 219, 0.7);
         }
         
         .container {
@@ -118,7 +150,13 @@
             border-radius: 8px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(160, 108, 213, 0.2);
         }
         
         h2 {
@@ -161,6 +199,14 @@
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill:hover {
+            background-color: var(--primary-purple);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(160, 108, 213, 0.3);
         }
         
         .portfolio-grid {
@@ -173,18 +219,24 @@
             border: 1px solid #eee;
             border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            background: white;
         }
         
         .portfolio-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(160, 108, 213, 0.3);
         }
         
         .portfolio-img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.05);
         }
         
         .portfolio-info {
@@ -218,6 +270,13 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(160, 108, 213, 0.2);
+            outline: none;
         }
         
         textarea {
@@ -232,11 +291,19 @@
             font-size: 1rem;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
         }
         
         button:hover {
             background-color: var(--dark-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(160, 108, 213, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(160, 108, 213, 0.5);
         }
         
         .social-links {
@@ -249,19 +316,34 @@
         .social-icon {
             color: var(--primary-purple);
             font-size: 1.5rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
         
         .social-icon:hover {
             color: var(--dark-purple);
+            transform: translateY(-3px) scale(1.1);
+            text-shadow: 0 2px 5px rgba(160, 108, 213, 0.3);
         }
         
         footer {
-            background-color: var(--dark-purple);
+            background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
             color: var(--white);
             text-align: center;
             padding: 2rem;
             margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Animation for section when navigated to */
+        section:target {
+            animation: highlight 1.5s ease;
+        }
+        
+        @keyframes highlight {
+            0% { background-color: var(--white); }
+            20% { background-color: var(--light-purple); }
+            100% { background-color: var(--white); }
         }
         
         @media (max-width: 768px) {
@@ -279,6 +361,10 @@
             
             .tagline {
                 font-size: 1.2rem;
+            }
+            
+            .nav-container {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -331,21 +417,21 @@
             <h2>My Work</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Project 1" class="portfolio-img">
+                    <img src="https://via.placeholder.com/300x200/a06cd5/ffffff?text=Project+1" alt="Project 1" class="portfolio-img">
                     <div class="portfolio-info">
                         <h3>Project Title 1</h3>
                         <p>Brief description of the project and your role in it.</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Project 2" class="portfolio-img">
+                    <img src="https://via.placeholder.com/300x200/b185db/ffffff?text=Project+2" alt="Project 2" class="portfolio-img">
                     <div class="portfolio-info">
                         <h3>Project Title 2</h3>
                         <p>Brief description of the project and your role in it.</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Project 3" class="portfolio-img">
+                    <img src="https://via.placeholder.com/300x200/dab6fc/333333?text=Project+3" alt="Project 3" class="portfolio-img">
                     <div class="portfolio-info">
                         <h3>Project Title 3</h3>
                         <p>Brief description of the project and your role in it.</p>
@@ -390,5 +476,20 @@
     <footer>
         <p>&copy; 2023 Zainab Tehreem Justice Wali. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Add click animation to nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Add active class for visual feedback
+                this.classList.add('active');
+                
+                // Remove active class after animation completes
+                setTimeout(() => {
+                    this.classList.remove('active');
+                }, 300);
+            });
+        });
+    </script>
 </body>
 </html>
