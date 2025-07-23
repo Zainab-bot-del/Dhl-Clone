@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Clone</title>
+    <title>ChatGPT</title>
     <style>
-        /* CSS Styles */
+        /* CSS Reset */
         * {
             margin: 0;
             padding: 0;
@@ -14,24 +14,105 @@
         }
         
         body {
-            background-color: #f7f7f8;
-            color: #343541;
+            display: flex;
+            height: 100vh;
+            background-color: #343541;
+            color: #ececf1;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            width: 260px;
+            background-color: #202123;
+            padding: 10px;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            height: 100%;
         }
         
-        .header {
-            background-color: #ffffff;
-            padding: 15px 20px;
-            border-bottom: 1px solid #e5e5e6;
+        .new-chat-btn {
             display: flex;
             align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border: 1px solid #4d4d4f;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            background-color: transparent;
+            color: white;
+            width: 100%;
         }
         
-        .header h1 {
-            font-size: 18px;
+        .new-chat-btn:hover {
+            background-color: #2b2c2f;
+        }
+        
+        .new-chat-btn .icon {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .sidebar-menu {
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-section h3 {
+            font-size: 12px;
+            font-weight: 500;
+            color: #8e8ea0;
+            padding: 6px 12px;
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .sidebar-item:hover {
+            background-color: #2b2c2f;
+        }
+        
+        .sidebar-item .icon {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .chat-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #4d4d4f;
+        }
+        
+        .chat-header h1 {
+            font-size: 20px;
             font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .chat-header p {
+            font-size: 14px;
+            color: #8e8ea0;
         }
         
         .chat-container {
@@ -40,151 +121,254 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-        }
-        
-        .message {
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            gap: 20px;
-            line-height: 1.5;
-        }
-        
-        .user-message {
-            background-color: #ffffff;
-            padding: 20px;
-        }
-        
-        .ai-message {
-            background-color: #f7f7f8;
-            padding: 20px;
-        }
-        
-        .avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 3px;
-            display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
         }
         
-        .user-avatar {
-            background-color: #19c37d;
-            color: white;
+        .welcome-message {
+            max-width: 700px;
+            text-align: center;
         }
         
-        .ai-avatar {
-            background-color: #5436da;
-            color: white;
+        .welcome-message h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
         
-        .message-content {
-            flex: 1;
-            padding-top: 5px;
+        .welcome-message p {
+            font-size: 16px;
+            color: #8e8ea0;
+            margin-bottom: 30px;
+        }
+        
+        .prompt-suggestions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 700px;
+        }
+        
+        .prompt-card {
+            background-color: #3e3f4b;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .prompt-card:hover {
+            background-color: #4e4f5b;
+        }
+        
+        .prompt-card h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .prompt-card p {
+            font-size: 12px;
+            color: #8e8ea0;
         }
         
         .input-container {
             padding: 20px;
-            background-color: #ffffff;
-            border-top: 1px solid #e5e5e6;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #4d4d4f;
         }
         
         .input-area {
-            max-width: 800px;
-            margin: 0 auto;
             position: relative;
+            width: 100%;
+            max-width: 700px;
         }
         
         textarea {
             width: 100%;
-            border: 1px solid #e5e5e6;
-            border-radius: 6px;
-            padding: 12px 50px 12px 15px;
+            background-color: #40414f;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 45px 12px 15px;
             resize: none;
             font-size: 16px;
+            color: white;
             min-height: 60px;
             max-height: 200px;
             outline: none;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
-        textarea:focus {
-            border-color: #5436da;
+        textarea::placeholder {
+            color: #8e8ea0;
         }
         
         .send-button {
             position: absolute;
             right: 10px;
-            bottom: 10px;
-            background-color: #5436da;
-            color: white;
+            bottom: 15px;
+            background: none;
             border: none;
-            border-radius: 4px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: #8e8ea0;
             cursor: pointer;
         }
         
-        .send-button:hover {
-            background-color: #3e28a1;
-        }
-        
-        .disclaimer {
+        .footer {
             text-align: center;
+            padding: 10px;
             font-size: 12px;
             color: #8e8ea0;
-            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>ChatGPT</h1>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <button class="new-chat-btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4V20M4 12H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            New chat
+        </button>
+        
+        <div class="sidebar-menu">
+            <div class="sidebar-section">
+                <h3>Search chats</h3>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Search chats
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Library</h3>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 19V6.2C4 5.0799 4 4.51984 4.21799 4.09202C4.40973 3.71569 4.71569 3.40973 5.09202 3.21799C5.51984 3 6.0799 3 7.2 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V17H6C4.89543 17 4 17.8954 4 19ZM4 19C4 20.1046 4.89543 21 6 21H20M9 7H15M9 11H15M9 15H12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Library
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>GPTs</h3>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 12H18M6 12H2M12 6V2M12 22V18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Sora
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 12H18M6 12H2M12 6V2M12 22V18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    GPTs
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Rehan Apps</h3>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 13V8C21 6.89543 20.1046 6 19 6H5C3.89543 6 3 6.89543 3 8V16C3 17.1046 3.89543 18 5 18H12M16 10H8M10 14H8M16 14H14M19 16V22M16 19H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Rehan Jobs AI - Work from...
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 14C19 15.1046 18.1046 16 17 16C15.8954 16 15 15.1046 15 14C15 12.8954 15.8954 12 17 12C18.1046 12 19 12.8954 19 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 12C21 13.1046 20.1046 14 19 14C17.8954 14 17 13.1046 17 12C17 10.8954 17.8954 10 19 10C20.1046 10 21 10.8954 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 8C7 9.10457 6.10457 10 5 10C3.89543 10 3 9.10457 3 8C3 6.89543 3.89543 6 5 6C6.10457 6 7 6.89543 7 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 16C5 17.1046 4.10457 18 3 18C1.89543 18 1 17.1046 1 16C1 14.8954 1.89543 14 3 14C4.10457 14 5 14.8954 5 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 10C9 11.1046 8.10457 12 7 12C5.89543 12 5 11.1046 5 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19 12C19 13.1046 18.1046 14 17 14C15.8954 14 15 13.1046 15 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 16V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15 12V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 16V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Voice Clone App
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 21H12M16 21H12M12 21V17M12 17H5C3.89543 17 3 16.1046 3 15V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V15C21 16.1046 20.1046 17 19 17H12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Rehan Viral Post Creator
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3V5M12 17V21M5 12H3M7.31412 7.31412L5.5 5.5M16.6859 7.31412L18.5 5.5M7.31412 16.688L5.5 18.5M16.6859 16.688L18.5 18.5M21 12H19M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Rehan School Task Caption...
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 16L8.29289 11.7071C8.68342 11.3166 9.31658 11.3166 9.70711 11.7071L13 15M13 15L15.2929 12.7071C15.6834 12.3166 16.3166 12.3166 16.7071 12.7071L21 17M13 15L16 18M21 12V18C21 19.1046 20.1046 20 19 20H5C3.89543 20 3 19.1046 3 18V6C3 4.89543 3.89543 4 5 4H12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Make ASMR Images And P...
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar-section">
+            <div class="sidebar-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12ZM12 12C15.3137 12 18 14.6863 18 18V19C18 20.1046 17.1046 21 16 21H8C6.89543 21 6 20.1046 6 19V18C6 14.6863 8.68629 12 12 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Dorrislin.chatsboard.nlm
+            </div>
+        </div>
     </div>
     
-    <div class="chat-container">
-        <div class="message user-message">
-            <div class="avatar user-avatar">U</div>
-            <div class="message-content">
-                Hello, how are you today?
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div class="chat-header">
+            <h1>ChatGPT</h1>
+            <p>What's on the agenda today?</p>
+        </div>
+        
+        <div class="chat-container">
+            <div class="welcome-message">
+                <h2>Ask anything</h2>
+                <p>Get instant answers, creative inspiration, and more</p>
+                
+                <div class="prompt-suggestions">
+                    <div class="prompt-card">
+                        <h3>Brainstorm marketing ideas</h3>
+                        <p>for a new eco-friendly water bottle</p>
+                    </div>
+                    <div class="prompt-card">
+                        <h3>Explain quantum computing</h3>
+                        <p>in simple terms</p>
+                    </div>
+                    <div class="prompt-card">
+                        <h3>Suggest fun activities</h3>
+                        <p>for a team building day</p>
+                    </div>
+                    <div class="prompt-card">
+                        <h3>Help me debug this code</h3>
+                        <p>for a Python script</p>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="message ai-message">
-            <div class="avatar ai-avatar">AI</div>
-            <div class="message-content">
-                Hello! I'm just a static interface, so I don't have feelings, but thank you for asking! How can I assist you today?
+        <div class="input-container">
+            <div class="input-area">
+                <textarea placeholder="Message ChatGPT..."></textarea>
+                <button class="send-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </div>
         </div>
         
-        <div class="message user-message">
-            <div class="avatar user-avatar">U</div>
-            <div class="message-content">
-                Can you tell me about this demo interface?
-            </div>
-        </div>
-        
-        <div class="message ai-message">
-            <div class="avatar ai-avatar">AI</div>
-            <div class="message-content">
-                This is a non-functional ChatGPT clone interface created with HTML and CSS. It mimics the visual appearance of ChatGPT but doesn't have any actual AI capabilities. It's just a static representation for demonstration purposes.
-            </div>
-        </div>
-    </div>
-    
-    <div class="input-container">
-        <div class="input-area">
-            <textarea placeholder="Message ChatGPT..."></textarea>
-            <button class="send-button">→</button>
-        </div>
-        <div class="disclaimer">
+        <div class="footer">
             ChatGPT can make mistakes. Consider checking important information.
         </div>
     </div>
